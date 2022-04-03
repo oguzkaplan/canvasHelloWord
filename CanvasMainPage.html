@@ -1,0 +1,27 @@
+<html>
+<head>
+  <title>Canvasa tıklada gel</title>
+</head>
+<body>
+    <script type='text/javascript'>
+        Canvas = function (element) {
+        this.canvas = document.createElement("canvas");
+        this.context = this.canvas.getContext('2d');
+        this.canvas.id = "display";
+       
+        element == undefined ? document.body.appendChild(this.canvas) : element.appendChild(this.canvas);
+        this.canvas.addEventListener("click", this.click.bind(this), false);
+    }
+    Canvas.prototype.of = function (mouse) {
+        console.log("x: " + mouse[0] + ", y: " + mouse[1]); //"mause x ve y kordinatları"
+    }
+    Canvas.prototype.click = function (e) {
+        alert("al burada ne istersen yap");
+        this.mouse = [e.clientX, e.clientY];
+        return this.of(this.mouse);
+    }
+    var myCanvas = new Canvas();
+    myCanvas.context.fillRect(0, 0, 50, 500);
+  </script>
+</body>
+</html>
